@@ -11,7 +11,7 @@ async function createWebDriverSession() {
     const anonymizedProxy = await getProxyUrl()
     const newProxyString = '199.102.107.145:4145'
     const driver = await new Builder()
-      .forBrowser('chrome')
+      .forBrowser('firefox')
       .usingServer('http://45.76.164.130:4444')
       .setProxy(
         proxy.manual({
