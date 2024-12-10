@@ -18,15 +18,17 @@ async function createWebDriverSession() {
       .forBrowser('firefox')
       .usingServer('http://45.76.164.130:4444')
       .setProxy(
-        proxy.socks(
-          'http://brd-customer-hl_83865ada-zone-residential_proxy1:hk3qi2shlu97@brd.superproxy.io:33335',
-          5
-        )
+        proxy.manual({
+          http: '166.0.234.253:41492',
+          https: '166.0.234.253:41492'
+        })
       )
       .build()
 
     const session = await driver.getSession()
     console.log('session', session)
+    await driver.get('https://www.google.com')
+    await driver.sleep(10000)
     return {
       success: true,
       sessionId: await session.id_,
