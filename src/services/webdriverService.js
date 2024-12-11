@@ -12,15 +12,15 @@ async function createWebDriverSession() {
     const p = proxy.socks('199.102.107.145:4145')
     const anonymizedProxy = await getProxyUrl()
     const newProxyString = '199.102.107.145:4145'
-
-    capabilities.setSoc
+    capabilities.setProxy()
     const driver = await new Builder()
-      .forBrowser('firefox')
+      .forBrowser('chrome')
       .usingServer('http://45.76.164.130:4444')
       .setProxy(
         proxy.manual({
-          http: '166.0.234.253:41492',
-          https: '166.0.234.253:41492'
+          http: 'http://brd-customer-hl_83865ada-zone-residential_proxy1:hk3qi2shlu97@brd.superproxy.io:33335',
+          https:
+            'https://brd-customer-hl_83865ada-zone-residential_proxy1:hk3qi2shlu97@brd.superproxy.io:33335'
         })
       )
       .build()
