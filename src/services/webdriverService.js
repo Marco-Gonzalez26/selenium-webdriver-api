@@ -64,39 +64,3 @@ async function createWebDriverSession() {
 module.exports = {
   createWebDriverSession
 }
-
-const phoneInput = document.querySelector(
-  'input[name*="sms"], input[id*="reg-sms-button"], ' +
-    'input[name*="phone"], input[placeholder*="phone"], input[id*="phone"], ' +
-    'input[name*="mobile"], input[placeholder*="mobile"], input[id*="mobile"], ' +
-    'input[name*="contact"], input[placeholder*="contact"], input[id*="contact"], ' +
-    'input[name*="tel"], input[placeholder*="tel"], input[id*="tel"]'
-)
-
-const nextButton =
-  document.getElementById('reg-sms-button') ||
-  Array.from(document.querySelectorAll('button')).find(
-    (btn) =>
-      btn.textContent.toLowerCase().includes('next') ||
-      btn.textContent.toLowerCase() === 'get code by text'
-  )
-setTimeout(() => {
-  const nextButton =
-    document.getElementById('reg-sms-button') ||
-    Array.from(document.querySelectorAll('button')).find(
-      (btn) =>
-        btn.textContent.toLowerCase().includes('next') ||
-        btn.textContent.toLowerCase() === 'get code by text'
-    )
-  if (nextButton) {
-    nextButton.click()
-    const divs = document.querySelectorAll('div')
-    isUsedTooManyTimes = divs.some((el) =>
-      el.innerText
-        .toLowerCase()
-        .includes('this phone number has been used too many times')
-    )
-  } else {
-    console.error('Next button not found')
-  }
-}, 2000)
