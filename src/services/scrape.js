@@ -1,7 +1,9 @@
 const { Builder, By } = require('selenium-webdriver')
 const proxyChain = require('proxy-chain')
 const proxy = require('selenium-webdriver/proxy')
-
+const fs = require('fs')
+const path = require('path')
+const chrome = require('selenium-webdriver/chrome')
 require('dotenv').config()
 async function scraper() {
   // define your proxy details
@@ -29,7 +31,7 @@ async function scraper() {
   // initialize the webdriver
   const driver = new Builder()
     .forBrowser('firefox')
-    .usingServer('http://45.76.164.130:4444')
+    .usingServer('http://45.76.164.130:4445')
     // add the proxy to the webdriver
     .setProxy(
       proxy.manual({
